@@ -16,11 +16,14 @@ class WordAdder extends React.Component {
           name="hiddenWord"
           onChange={this.handleChange}
           value={hiddenWordInput}
+         
         />
         <button type="submit">Submit Word!</button>
       </form>
     );
   }
+
+  
 
   handleSubmit = event => {
 
