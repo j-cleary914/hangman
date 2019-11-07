@@ -7,7 +7,6 @@ class WordAdder extends React.Component {
 
   render() {
     const { hiddenWordInput } = this.state;
-    console.log(this.state);
     return (
       <form onSubmit={this.handleSubmit}>
         <label htmlFor="hiddenWord">Enter Hidden Word </label>
@@ -16,6 +15,7 @@ class WordAdder extends React.Component {
           type="text"
           name="hiddenWord"
           onChange={this.handleChange}
+          value={hiddenWordInput}
         />
         <button type="submit">Submit Word!</button>
       </form>
@@ -23,17 +23,19 @@ class WordAdder extends React.Component {
   }
 
   handleSubmit = event => {
-    console.log(event);
+
     event.preventDefault();
     const { hiddenWordInput } = this.state;
     this.props.addHiddenWord(hiddenWordInput);
-    console.log(this.props);
+    this.setState(() => {
+      return { hiddenWordInput: '' }
+    })
   };
 
   handleChange = event => {
     const { value } = event.target;
-    //console.log(value);
     this.setState({ hiddenWordInput: value });
+
   };
 }
 

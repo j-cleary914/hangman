@@ -8,6 +8,7 @@ class App extends React.Component {
   };
 
   render() {
+    console.log(this.state, 'app state')
     return (
       <div className="App">
         <header className="App-header">
@@ -18,7 +19,11 @@ class App extends React.Component {
     );
   }
 
-  addHiddenWord = word => {};
+  addHiddenWord = word => {
+    this.setState(() => {
+      return { hiddenWord: word }
+    })
+  };
 }
 
 export default App;
