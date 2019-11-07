@@ -2,15 +2,17 @@ import React from "react";
 import "./App.css";
 import WordAdder from "./components/WordAdder";
 import LetterAdder from "./components/LetterAdder";
+import Displayer from "./components/Displayer";
 
 class App extends React.Component {
   state = {
     hiddenWord: "",
-    guess: ''
+    guess: "",
+    guessArray: []
   };
 
   render() {
-    console.log(this.state, 'app state!!!!')
+    //console.log(this.state, "app state!!!!");
     return (
       <div className="App">
         <header className="App-header">
@@ -18,20 +20,24 @@ class App extends React.Component {
           <WordAdder addHiddenWord={this.addHiddenWord} />
           <LetterAdder addLetter={this.addLetter} />
         </header>
+        <main>
+          <Displayer appState={this.state} />
+        </main>
       </div>
     );
   }
 
   addLetter = letter => {
-    this.setState(() => {
-      return { guess: letter }
-    })
-  }
+    this.setState(currentState => {
+      return {
+        guess: letter,
+        guessArray: [...currentState.guessArray, letter]
+      };
+    });
+  };
 
   addHiddenWord = word => {
-    this.setState(() => {
-      return { hiddenWord: word }
-    })
+    this.setState({ hiddenWord: word });
   };
 }
 
