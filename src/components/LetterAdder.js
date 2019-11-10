@@ -40,7 +40,7 @@ class LetterAdder extends React.Component {
       this.setState(() => {
         return { letterInput: "" };
       });
-    } else alert("!!!!!!Repeat Letter Submitted!!!!!");
+    } else alert("Repeat Letter Submitted!");
   };
 
   handleChange = event => {
